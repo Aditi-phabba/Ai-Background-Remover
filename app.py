@@ -21,6 +21,17 @@ def download_model():
         print("✅ Model already exists.")
 
 
+
+import gdown
+import os
+
+MODEL_URL = "https://drive.google.com/uc?id=1rbSTGKAE-MTxBYHd-51l2hMOQPT_7EPy"
+MODEL_PATH = "model/u2net.pth"
+
+# Auto-download if not found
+if not os.path.exists(MODEL_PATH):
+    gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
+
 # Load model only once
 @st.cache_resource
 def load_model():
